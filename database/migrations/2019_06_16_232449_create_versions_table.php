@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateVersionsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('versions', function (Blueprint $table) {
+            $table->increments('id');
+            $table->varchar('item_type');
+            $table->int('item_id');
+            $table->varchar('event');
+            $table->varchar('whodunnit');
+            $table->text('object');
+            $table->timestamps();
+            $table->int('active');
+            $table->varchar('item_spanish');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('versions');
+    }
+}
